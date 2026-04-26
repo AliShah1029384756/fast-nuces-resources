@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FAST NUCES — Resource Hub</title>
 <meta name="description" content="FAST-NUCES resource hub with semester-wise notes, past papers, course links, curated repositories, and project references.">
+<meta name="title" content="Ali Shah | Full Stack Developer & FAST NUCES Portfolio">
+<meta name="keywords" content="FAST NUCES Resources, CS Student Portfolio, Full Stack Developer Lahore, Campus+ FAST, Data Structures Notes, Web Development Roadmap">
+<meta name="author" content="Ali Shah">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -25,6 +28,17 @@
     --font-display: 'Syne', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
     --font-body: 'Instrument Sans', sans-serif;
+  }
+  html[data-theme='light'] {
+    --bg: #f7fafc;
+    --surface: #edf3fa;
+    --surface2: #e2eaf5;
+    --border: #0f172a1a;
+    --border-bright: #0f172a2e;
+    --text: #0f172a;
+    --text-muted: #5b6b82;
+    --text-dim: #334155;
+    --red: #be123c;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -105,6 +119,17 @@
     border-radius: 6px !important;
   }
   .nav-cta:hover { background: #6d28d9 !important; }
+  .theme-toggle {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border-bright);
+    border-radius: 999px;
+    padding: 0.34rem 0.72rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    cursor: pointer;
+  }
+  .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
   .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
 
@@ -267,6 +292,294 @@
     font-size: 0.95rem;
     max-width: 500px;
   }
+  .update-strip {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem;
+  }
+  .update-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 1rem;
+  }
+  .update-note,
+  .category-jump {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+  }
+  .update-note p {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.65;
+  }
+  .category-jump h3 {
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+    margin-bottom: 0.55rem;
+  }
+  .jump-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.38rem;
+  }
+  .jump-links a {
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    padding: 0.24rem 0.58rem;
+    border: 1px solid var(--border-bright);
+    border-radius: 999px;
+    color: var(--text-dim);
+    background: rgba(255,255,255,0.02);
+  }
+  .jump-links a:hover {
+    color: var(--accent);
+    border-color: rgba(0,212,255,0.35);
+  }
+  .compact-tag {
+    margin-bottom: 0.55rem;
+  }
+
+  /* ===== GLOBAL SEARCH BAR ===== */
+  .search-strip {
+    padding: 1.4rem 2rem;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(124,58,237,0.06), rgba(0,0,0,0));
+  }
+  .search-shell {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.6rem;
+    align-items: center;
+  }
+  .search-input {
+    width: 100%;
+    background: var(--surface2);
+    color: var(--text);
+    border: 1px solid var(--border-bright);
+    border-radius: 10px;
+    padding: 0.72rem 0.9rem;
+    font-size: 0.88rem;
+    font-family: var(--font-body);
+  }
+  .search-input::placeholder { color: var(--text-muted); }
+  .search-meta {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.5rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+  }
+
+  /* ===== FLOATING QUICK LINKS ===== */
+  .floating-quick-links {
+    position: fixed;
+    right: 1rem;
+    top: 6.2rem;
+    z-index: 90;
+    width: 200px;
+    background: rgba(17,17,24,0.86);
+    border: 1px solid var(--border-bright);
+    border-radius: 12px;
+    padding: 0.8rem;
+    backdrop-filter: blur(10px);
+  }
+  .floating-quick-links h3 {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+  .floating-quick-links a {
+    display: block;
+    text-decoration: none;
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    padding: 0.35rem 0.45rem;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    margin-bottom: 0.25rem;
+  }
+  .floating-quick-links a:hover {
+    color: var(--accent);
+    border-color: rgba(0,212,255,0.25);
+    background: rgba(255,255,255,0.03);
+  }
+
+  /* ===== ROADMAPS / TOOLS / PLANNER ===== */
+  .pathway-grid,
+  .tools-grid,
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .pathway-card,
+  .tool-card,
+  .timeline-card,
+  .planner-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.2rem;
+    transition: all 0.2s;
+  }
+  .pathway-card:hover,
+  .tool-card:hover,
+  .timeline-card:hover,
+  .planner-card:hover {
+    border-color: var(--border-bright);
+    transform: translateY(-2px);
+  }
+  .pathway-card h3,
+  .tool-card h3,
+  .timeline-card h3,
+  .planner-card h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    margin-bottom: 0.45rem;
+  }
+  .pathway-card p,
+  .tool-card p,
+  .timeline-card p,
+  .planner-card p {
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    margin-bottom: 0.75rem;
+  }
+  .mini-list {
+    list-style: none;
+    display: grid;
+    gap: 0.35rem;
+  }
+  .mini-list li {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 0.35rem 0.5rem;
+    background: rgba(255,255,255,0.02);
+  }
+  .tool-link {
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--accent);
+    border: 1px solid rgba(0,212,255,0.28);
+    border-radius: 6px;
+    padding: 0.34rem 0.5rem;
+    display: inline-flex;
+    margin-right: 0.35rem;
+    margin-top: 0.25rem;
+  }
+  .tool-link:hover { background: rgba(0,212,255,0.08); }
+
+  /* ===== SGPA CALCULATOR ===== */
+  .planner-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 1rem;
+  }
+  .sgpa-grid {
+    display: grid;
+    gap: 0.6rem;
+  }
+  .sgpa-row {
+    display: grid;
+    grid-template-columns: 1.4fr 0.7fr 0.9fr auto;
+    gap: 0.5rem;
+  }
+  .sgpa-row input,
+  .sgpa-row select {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 7px;
+    padding: 0.45rem 0.55rem;
+    font-size: 0.78rem;
+  }
+  .sgpa-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .tiny-btn {
+    border: 1px solid var(--border-bright);
+    background: var(--surface2);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    border-radius: 6px;
+    padding: 0.35rem 0.6rem;
+    cursor: pointer;
+  }
+  .tiny-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .sgpa-result {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    line-height: 1;
+    margin-bottom: 0.35rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .grade-guide {
+    display: grid;
+    gap: 0.35rem;
+    margin-top: 0.7rem;
+  }
+  .grade-guide div {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.67rem;
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 0.28rem 0.45rem;
+  }
+
+  /* ===== COURSE PROGRESS ===== */
+  .course-card.done {
+    border-color: rgba(16,185,129,0.6);
+    box-shadow: inset 0 0 0 1px rgba(16,185,129,0.2);
+  }
+  .course-card.done .course-name::after {
+    content: ' Done';
+    color: var(--accent3);
+    font-size: 0.68rem;
+    margin-left: 0.35rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .survival-tip {
+    margin-top: 0.6rem;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    border-left: 2px solid var(--c-color, var(--accent));
+    padding-left: 0.5rem;
+  }
+  .course-btn-done {
+    background: rgba(16,185,129,0.09);
+    color: #6ee7b7;
+    border-color: rgba(16,185,129,0.3);
+  }
+  .course-btn-done:hover { background: rgba(16,185,129,0.2); }
 
   /* ===== SEMESTER SECTION ===== */
   #semesters { background: var(--surface); }
@@ -432,7 +745,7 @@
   #courses { background: var(--surface); }
   .courses-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
     gap: 1rem;
   }
   .course-card {
@@ -471,21 +784,98 @@
     color: var(--text);
     line-height: 1.3;
   }
-  .course-links {
-    display: flex; gap: 0.4rem; margin-top: 1rem; flex-wrap: wrap;
-  }
-  .clink {
-    font-size: 0.62rem;
+  .topic-preview {
+    margin-top: 0.7rem;
+    font-size: 0.72rem;
     font-family: var(--font-mono);
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    text-decoration: none;
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.45rem 0.55rem;
+    opacity: 0;
+    transform: translateY(4px);
     transition: all 0.2s;
   }
-  .clink:hover { opacity: 1; }
-  .clink-blue { background: rgba(0,212,255,0.08); color: var(--accent); border: 1px solid rgba(0,212,255,0.2); opacity: 0.8; }
-  .clink-purple { background: rgba(124,58,237,0.08); color: #a78bfa; border: 1px solid rgba(124,58,237,0.2); opacity: 0.8; }
-  .clink-green { background: rgba(16,185,129,0.08); color: var(--accent3); border: 1px solid rgba(16,185,129,0.2); opacity: 0.8; }
+  .course-card:hover .topic-preview {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .course-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+    margin-top: 0.95rem;
+  }
+  .course-btn {
+    text-decoration: none;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    border-radius: 7px;
+    padding: 0.38rem 0.55rem;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .course-btn-campus {
+    background: #2563eb;
+    color: #f8fbff;
+    border-color: #2563eb;
+  }
+  .course-btn-campus:hover { background: #1d4ed8; }
+  .course-btn-notes {
+    background: rgba(124,58,237,0.1);
+    color: #c4b5fd;
+    border-color: rgba(124,58,237,0.25);
+  }
+  .course-btn-notes:hover { background: rgba(124,58,237,0.18); }
+  .course-btn-practice {
+    background: rgba(16,185,129,0.1);
+    color: #6ee7b7;
+    border-color: rgba(16,185,129,0.25);
+  }
+  .course-btn-practice:hover { background: rgba(16,185,129,0.18); }
+  .notes-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1600;
+    background: rgba(2, 6, 23, 0.76);
+    padding: 1rem;
+  }
+  .notes-modal.open { display: flex; }
+  .notes-shell {
+    width: min(880px, 100%);
+    max-height: 82vh;
+    overflow: auto;
+    background: var(--surface);
+    border: 1px solid var(--border-bright);
+    border-radius: 12px;
+    padding: 1rem;
+  }
+  .notes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+  }
+  .notes-close {
+    border: 1px solid var(--border-bright);
+    background: var(--surface2);
+    color: var(--text);
+    border-radius: 6px;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+  }
+  #notesContent {
+    font-size: 0.86rem;
+    color: var(--text-dim);
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
 
   /* ===== PAST PAPERS SECTION ===== */
   .papers-grid {
@@ -725,8 +1115,15 @@
     .nav-links.open { display: flex; }
     .hamburger { display: flex; }
     .hero { padding: 5rem 1.2rem 3rem; }
+    .update-strip { padding: 1.4rem 1.2rem; }
+    .update-inner { grid-template-columns: 1fr; }
     .hero h1 { font-size: 2.8rem; }
     section { padding: 3.5rem 1.2rem; }
+    .search-strip { padding: 1rem 1.2rem; }
+    .search-shell { grid-template-columns: 1fr; }
+    .floating-quick-links { display: none; }
+    .planner-layout { grid-template-columns: 1fr; }
+    .sgpa-row { grid-template-columns: 1fr 0.7fr 0.8fr auto; }
     .contribute-box { grid-template-columns: 1fr; gap: 2rem; padding: 2rem; }
     .resources-grid { grid-template-columns: 1fr; }
     .hero-stats { gap: 1.5rem; }
@@ -750,6 +1147,7 @@
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contribute" class="nav-cta">Contribute</a></li>
   </ul>
+  <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle color mode">Light Mode</button>
   <div class="hamburger" id="hamburger" onclick="toggleNav()">
     <span></span><span></span><span></span>
   </div>
@@ -771,7 +1169,7 @@
     </p>
     <div class="hero-actions">
       <a href="#semesters" class="btn-primary">Browse by Semester →</a>
-      <a href="https://github.com/AliShah1029384756" target="_blank" class="btn-secondary">↗ GitHub Profile</a>
+      <a href="https://github.com/AliShah1029384756" target="_blank" rel="noopener noreferrer" class="btn-secondary">↗ GitHub Profile</a>
     </div>
     <div class="hero-stats">
       <div class="stat">
@@ -790,6 +1188,176 @@
         <span class="stat-num">Free</span>
         <span class="stat-label">Always</span>
       </div>
+    </div>
+  </div>
+</section>
+<section class="update-strip" aria-label="Policy safe update notice">
+  <div class="update-inner">
+    <div class="update-note">
+      <div class="section-tag compact-tag">Update Policy</div>
+      <p>This hub is kept current with safe public references and structured navigation. Sensitive or restricted academic material is not republished here. Use linked repositories/platforms for officially shared resources. Last verified context: Spring 2026.</p>
+    </div>
+    <aside class="category-jump">
+      <h3>Quick Category Jump</h3>
+      <div class="jump-links">
+        <a href="#repositories">Repo Sources</a>
+        <a href="#courses">Course Links</a>
+        <a href="#pastpapers">Past Papers</a>
+        <a href="#projects">Project References</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="search-strip" aria-label="Search resources quickly">
+  <div class="search-shell">
+    <input id="resourceSearch" class="search-input" type="search" placeholder="Search course, semester, tool, repo, or project (e.g., DSA, COAL, DBMS)">
+    <div id="searchMeta" class="search-meta">Showing all resources</div>
+  </div>
+</section>
+
+<aside class="floating-quick-links" aria-label="Quick links sidebar">
+  <h3>Quick Links</h3>
+  <a href="#semesters">Current Semester Map</a>
+  <a href="#pastpapers">Past Papers</a>
+  <a href="#planner">SGPA Calculator</a>
+  <a href="#tools">Setup Tools</a>
+  <a href="#contribute">Submit Notes Form</a>
+</aside>
+
+<div class="divider"></div>
+
+<section id="pathways">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Career Direction</div>
+      <h2 class="section-title">Learning <span>Pathways</span></h2>
+      <p class="section-desc">Follow these guided tracks so you do not waste semesters deciding what to prioritize.</p>
+    </div>
+    <div class="pathway-grid reveal">
+      <article class="pathway-card">
+        <h3>AI Pathway</h3>
+        <p>Best if you want ML, research, or data-heavy internships.</p>
+        <ul class="mini-list">
+          <li>Sem 3: DSA + Probability</li>
+          <li>Sem 5: AI + SDA foundations</li>
+          <li>Sem 6: Machine Learning + strong math revision</li>
+          <li>Sem 7-8: Deep Learning + FYP in AI domain</li>
+        </ul>
+      </article>
+      <article class="pathway-card">
+        <h3>Web Dev Pathway</h3>
+        <p>Best if you want software houses, startups, and freelance products.</p>
+        <ul class="mini-list">
+          <li>Sem 2-3: OOP + DSA + Git basics</li>
+          <li>Sem 4: DBMS + SE (backend mindset)</li>
+          <li>Sem 5-6: Full-stack MERN projects + deployment</li>
+          <li>Sem 7-8: Production polish + portfolio + FYP delivery</li>
+        </ul>
+      </article>
+      <article class="pathway-card">
+        <h3>Systems Pathway</h3>
+        <p>Best for low-level engineering, compilers, security, and performance roles.</p>
+        <ul class="mini-list">
+          <li>Sem 2-3: DLD + COAL with regular lab practice</li>
+          <li>Sem 4: OS + Automata deep understanding</li>
+          <li>Sem 5: Compiler Construction + CN</li>
+          <li>Sem 6+: Security electives + systems-focused FYP</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="tools">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Setup Zone</div>
+      <h2 class="section-title">Software & <span>Tools</span></h2>
+      <p class="section-desc">One-click official links for tools students repeatedly need in labs and assignments.</p>
+    </div>
+    <div class="tools-grid reveal">
+      <article class="tool-card">
+        <h3>DLD / Digital Logic</h3>
+        <p>Use simulator tools for combinational and sequential design practice.</p>
+        <a class="tool-link" href="https://sourceforge.net/projects/circuit/" target="_blank" rel="noopener noreferrer">Logisim Evolution ↗</a>
+      </article>
+      <article class="tool-card">
+        <h3>COAL / Assembly</h3>
+        <p>For assembly labs, start with emulator and debugger basics.</p>
+        <a class="tool-link" href="https://www.dosbox.com/" target="_blank" rel="noopener noreferrer">DOSBox ↗</a>
+        <a class="tool-link" href="https://emu8086-microprocessor-emulator.en.softonic.com/" target="_blank" rel="noopener noreferrer">8086 Emulator ↗</a>
+      </article>
+      <article class="tool-card">
+        <h3>Database Systems</h3>
+        <p>Install a DB server and start with query fundamentals plus normalization drills.</p>
+        <a class="tool-link" href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads" target="_blank" rel="noopener noreferrer">SQL Server ↗</a>
+        <a class="tool-link" href="https://www.postgresql.org/download/" target="_blank" rel="noopener noreferrer">PostgreSQL ↗</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="timeline">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Semester Planner</div>
+      <h2 class="section-title">Academic <span>Timeline</span></h2>
+      <p class="section-desc">Use this as a planning reference and update it according to official FAST notifications.</p>
+    </div>
+    <div class="timeline-grid reveal">
+      <article class="timeline-card">
+        <h3>Week 1-4</h3>
+        <p>Syllabus lock-in, lab groups, first assignment cycle, quiz rhythm starts.</p>
+      </article>
+      <article class="timeline-card">
+        <h3>Week 5-8</h3>
+        <p>Midterm window. Prioritize solved papers and course survival topics.</p>
+      </article>
+      <article class="timeline-card">
+        <h3>Week 9-14</h3>
+        <p>Project demos, final assignments, and end-semester exam prep period.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="planner">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Student Utility</div>
+      <h2 class="section-title">SGPA <span>Calculator</span></h2>
+      <p class="section-desc">Quick local calculator based on common grade points. Data stays in your browser only.</p>
+    </div>
+    <div class="planner-layout reveal">
+      <div class="planner-card">
+        <div id="sgpaRows" class="sgpa-grid"></div>
+        <div class="sgpa-actions">
+          <button id="addCourseRow" class="tiny-btn" type="button">Add Course</button>
+          <button id="calcSgpa" class="tiny-btn" type="button">Calculate SGPA</button>
+          <button id="resetSgpa" class="tiny-btn" type="button">Reset</button>
+        </div>
+      </div>
+      <aside class="planner-card">
+        <div id="sgpaResult" class="sgpa-result">0.00</div>
+        <p>Estimated SGPA based on entered credit hours and grades.</p>
+        <div class="grade-guide">
+          <div><span>A</span><span>4.00</span></div>
+          <div><span>A-</span><span>3.67</span></div>
+          <div><span>B+</span><span>3.33</span></div>
+          <div><span>B</span><span>3.00</span></div>
+          <div><span>C+</span><span>2.33</span></div>
+          <div><span>C</span><span>2.00</span></div>
+          <div><span>D</span><span>1.00</span></div>
+          <div><span>F</span><span>0.00</span></div>
+        </div>
+      </aside>
     </div>
   </div>
 </section>
@@ -1019,40 +1587,37 @@
 <section id="courses">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-tag">Course Directory</div>
-      <h2 class="section-title">Browse by <span>Course</span></h2>
-      <p class="section-desc">Direct links to material, YouTube playlists, and reference resources per subject.</p>
+      <div class="section-tag">Resource Dashboard</div>
+      <h2 class="section-title">FAST Core <span>Courses</span></h2>
+      <p class="section-desc">Focused high-yield cards for midterm prep with direct learning and practice access.</p>
     </div>
     <div class="courses-grid reveal">
 
       <div class="course-card" style="--c-color:#00d4ff">
         <span class="course-icon">⚡</span>
         <div class="course-code">CS-201</div>
-        <div class="course-name">Data Structures & Algorithms</div>
-        <div class="course-links">
-          <a href="https://github.com/topics/fast-nuces" target="_blank" class="clink clink-blue">GitHub</a>
-          <a href="https://www.youtube.com/results?search_query=DSA+complete+course" target="_blank" class="clink clink-purple">YouTube</a>
-          <a href="https://visualgo.net" target="_blank" class="clink clink-green">Visualgo</a>
+        <div class="course-name">Data Structures (DSA)</div>
+        <div class="topic-preview">Trees, Graphs, Hash Tables</div>
+        <div class="survival-tip">How to pass: Solve 2 linked-list + 2 tree questions weekly. Focus especially on time complexity analysis.</div>
+        <div class="course-actions">
+          <a href="https://www.campusplus.live/playlists/dsa" target="_blank" class="course-btn course-btn-campus">Watch on Campus+</a>
+          <button type="button" class="course-btn course-btn-notes" data-notes="CS-201 DSA Notes\n\nRecommended topics:\n- Trees and traversals\n- Graph basics and shortest path\n- Hashing and collision handling\n\nIf your local notes file is missing, use the practice repo.">View Notes</button>
+          <a href="https://github.com/AliShah1029384756/dsa-notes" target="_blank" class="course-btn course-btn-practice">Practice Papers</a>
+          <button type="button" class="course-btn course-btn-done" data-progress-id="course-dsa">Mark as Done</button>
         </div>
       </div>
 
       <div class="course-card" style="--c-color:#a78bfa">
         <span class="course-icon">🏗️</span>
-        <div class="course-code">CS-218</div>
+        <div class="course-code">CS-211</div>
         <div class="course-name">Object Oriented Programming</div>
-        <div class="course-links">
-          <a href="https://github.com/nuces-isb-past-papers" target="_blank" class="clink clink-blue">Past Papers</a>
-          <a href="https://www.youtube.com/results?search_query=OOP+C%2B%2B+full+course" target="_blank" class="clink clink-purple">YouTube</a>
-        </div>
-      </div>
-
-      <div class="course-card" style="--c-color:#10b981">
-        <span class="course-icon">🗄️</span>
-        <div class="course-code">CS-304</div>
-        <div class="course-name">Database Systems</div>
-        <div class="course-links">
-          <a href="https://github.com/hassanzhd/FAST-Resources" target="_blank" class="clink clink-blue">Notes</a>
-          <a href="https://www.youtube.com/results?search_query=database+systems+lecture" target="_blank" class="clink clink-purple">YouTube</a>
+        <div class="topic-preview">Polymorphism, Inheritance, Abstraction</div>
+        <div class="survival-tip">How to pass: Practice class diagrams and dry-run inheritance cases. Generic FAST tip: focus on lab tasks for Mid-1.</div>
+        <div class="course-actions">
+          <a href="https://www.campusplus.live/playlists/oop" target="_blank" class="course-btn course-btn-campus">Watch on Campus+</a>
+          <button type="button" class="course-btn course-btn-notes" data-notes="CS-211 OOP Notes\n\nRecommended topics:\n- Classes and objects\n- Inheritance patterns\n- Runtime polymorphism\n\nUse linked GitHub folder for labs and papers.">View Notes</button>
+          <a href="https://github.com/AliShah1029384756/oop-concepts" target="_blank" class="course-btn course-btn-practice">Practice Papers</a>
+          <button type="button" class="course-btn course-btn-done" data-progress-id="course-oop">Mark as Done</button>
         </div>
       </div>
 
@@ -1060,95 +1625,43 @@
         <span class="course-icon">🖥️</span>
         <div class="course-code">CS-302</div>
         <div class="course-name">Operating Systems</div>
-        <div class="course-links">
-          <a href="https://github.com/hassanzhd/FAST-Resources" target="_blank" class="clink clink-blue">Notes</a>
-          <a href="https://www.youtube.com/results?search_query=operating+systems+full+course" target="_blank" class="clink clink-purple">YouTube</a>
+        <div class="topic-preview">CPU Scheduling, Deadlocks, Paging</div>
+        <div class="survival-tip">How to pass: Prioritize scheduling, deadlocks, and paging numericals first. Build your own short formula sheet.</div>
+        <div class="course-actions">
+          <a href="https://www.campusplus.live/playlists/os" target="_blank" class="course-btn course-btn-campus">Watch on Campus+</a>
+          <button type="button" class="course-btn course-btn-notes" data-notes="CS-302 OS Notes\n\nRecommended topics:\n- Process scheduling\n- Deadlocks\n- Memory management\n\nUse linked repository for papers and revision assets.">View Notes</button>
+          <a href="https://github.com/AliShah1029384756/os-survival" target="_blank" class="course-btn course-btn-practice">Practice Papers</a>
+          <button type="button" class="course-btn course-btn-done" data-progress-id="course-os">Mark as Done</button>
         </div>
       </div>
 
-      <div class="course-card" style="--c-color:#f472b6">
-        <span class="course-icon">🌐</span>
-        <div class="course-code">CS-403</div>
-        <div class="course-name">Computer Networks</div>
-        <div class="course-links">
-          <a href="https://github.com/hassanzhd/FAST-Resources" target="_blank" class="clink clink-blue">Notes</a>
-          <a href="https://www.youtube.com/results?search_query=computer+networks+full+course" target="_blank" class="clink clink-purple">YouTube</a>
-        </div>
-      </div>
-
-      <div class="course-card" style="--c-color:#60a5fa">
-        <span class="course-icon">🔧</span>
-        <div class="course-code">CS-310</div>
-        <div class="course-name">Computer Organization & Assembly</div>
-        <div class="course-links">
-          <a href="https://github.com/nuces-isb-past-papers" target="_blank" class="clink clink-blue">Past Papers</a>
-          <a href="https://www.youtube.com/results?search_query=assembly+language+COAL+FAST" target="_blank" class="clink clink-purple">YouTube</a>
-        </div>
-      </div>
-
-      <div class="course-card" style="--c-color:#34d399">
-        <span class="course-icon">⚙️</span>
-        <div class="course-code">CS-413</div>
-        <div class="course-name">Compiler Construction</div>
-        <div class="course-links">
-          <a href="https://github.com/AliShah1029384756/university-course-projects" target="_blank" class="clink clink-green">Example</a>
-          <a href="https://www.youtube.com/results?search_query=compiler+construction+lectures" target="_blank" class="clink clink-purple">YouTube</a>
-        </div>
-      </div>
-
-      <div class="course-card" style="--c-color:#fb923c">
-        <span class="course-icon">🤖</span>
-        <div class="course-code">CS-406</div>
-        <div class="course-name">Artificial Intelligence</div>
-        <div class="course-links">
-          <a href="https://github.com/hassanzhd/FAST-Resources" target="_blank" class="clink clink-blue">Notes</a>
-          <a href="https://www.youtube.com/results?search_query=artificial+intelligence+full+course" target="_blank" class="clink clink-purple">YouTube</a>
-        </div>
-      </div>
-
-      <div class="course-card" style="--c-color:#e879f9">
-        <span class="course-icon">🧮</span>
-        <div class="course-code">CS-204</div>
-        <div class="course-name">Discrete Structures</div>
-        <div class="course-links">
-          <a href="https://github.com/nuces-isb-past-papers" target="_blank" class="clink clink-blue">Past Papers</a>
-          <a href="https://www.youtube.com/results?search_query=discrete+mathematics+full+course" target="_blank" class="clink clink-purple">YouTube</a>
-        </div>
-      </div>
-
-      <div class="course-card" style="--c-color:#4ade80">
-        <span class="course-icon">📐</span>
-        <div class="course-code">MT-101</div>
-        <div class="course-name">Calculus & Analytical Geometry</div>
-        <div class="course-links">
-          <a href="https://www.youtube.com/@DrTreforBazett" target="_blank" class="clink clink-green">Trefor Bazett</a>
-          <a href="https://www.youtube.com/results?search_query=calculus+full+course" target="_blank" class="clink clink-purple">YouTube</a>
-        </div>
-      </div>
-
-      <div class="course-card" style="--c-color:#38bdf8">
-        <span class="course-icon">🔐</span>
-        <div class="course-code">CS-415</div>
-        <div class="course-name">Information Security</div>
-        <div class="course-links">
-          <a href="https://github.com/hassanzhd/FAST-Resources" target="_blank" class="clink clink-blue">Notes</a>
-          <a href="https://www.youtube.com/results?search_query=information+security+lecture" target="_blank" class="clink clink-purple">YouTube</a>
-        </div>
-      </div>
-
-      <div class="course-card" style="--c-color:#fbbf24">
-        <span class="course-icon">📊</span>
-        <div class="course-code">CS-362</div>
-        <div class="course-name">Software Engineering</div>
-        <div class="course-links">
-          <a href="https://github.com/hassanzhd/FAST-Resources" target="_blank" class="clink clink-blue">Notes</a>
-          <a href="https://www.youtube.com/results?search_query=software+engineering+course" target="_blank" class="clink clink-purple">YouTube</a>
+      <div class="course-card" style="--c-color:#10b981">
+        <span class="course-icon">🗄️</span>
+        <div class="course-code">CS-304</div>
+        <div class="course-name">Database Systems</div>
+        <div class="topic-preview">Normalization, SQL Joins, Indexing</div>
+        <div class="survival-tip">How to pass: Master normalization + SQL joins + transactions. Practice at least one schema design every week.</div>
+        <div class="course-actions">
+          <a href="https://www.campusplus.live/playlists/db" target="_blank" class="course-btn course-btn-campus">Watch on Campus+</a>
+          <button type="button" class="course-btn course-btn-notes" data-notes="CS-304 DB Notes\n\nRecommended topics:\n- Normalization\n- SQL joins and query plans\n- Transaction isolation\n\nUse linked repo for sheets, query sets, and papers.">View Notes</button>
+          <a href="https://github.com/AliShah1029384756/db-queries" target="_blank" class="course-btn course-btn-practice">Practice Papers</a>
+          <button type="button" class="course-btn course-btn-done" data-progress-id="course-db">Mark as Done</button>
         </div>
       </div>
 
     </div>
   </div>
 </section>
+
+<div id="notesModal" class="notes-modal" role="dialog" aria-modal="true" aria-label="Course notes modal">
+  <div class="notes-shell">
+    <div class="notes-header">
+      <h3>Course Notes</h3>
+      <button id="closeNotesModal" type="button" class="notes-close">Close</button>
+    </div>
+    <div id="notesContent">No notes selected.</div>
+  </div>
+</div>
 
 <div class="divider"></div>
 
@@ -1343,6 +1856,7 @@
         <div style="display:flex; gap:1rem; flex-wrap:wrap;">
           <a href="https://github.com/nuces-isb-past-papers" target="_blank" class="btn-primary">Contribute to ISB Org →</a>
           <a href="https://github.com/AliShah1029384756" target="_blank" class="btn-secondary">View My Profile</a>
+          <a href="https://forms.gle/" target="_blank" class="btn-secondary">Submit Notes Form ↗</a>
         </div>
       </div>
       <div>
@@ -1374,12 +1888,27 @@
     </div>
     <div class="footer-copy">
       Free to use · Share with every FASTian · 
-      Made with care by <a href="https://github.com/AliShah1029384756" target="_blank">AliShah1029384756</a>
+      Made with care by <a href="https://github.com/AliShah1029384756" target="_blank">AliShah1029384756</a> · Last verified: Apr 2026
     </div>
   </div>
 </footer>
 
 <script>
+  const THEME_KEY = 'ali-hub-theme';
+  const themeToggle = document.getElementById('themeToggle');
+  function setTheme(mode) {
+    const theme = mode === 'light' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
+    if (themeToggle) themeToggle.textContent = theme === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+  setTheme(localStorage.getItem(THEME_KEY) || 'dark');
+  themeToggle?.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    const next = current === 'light' ? 'dark' : 'light';
+    setTheme(next);
+    localStorage.setItem(THEME_KEY, next);
+  });
+
   // Nav toggle
   function toggleNav() {
     document.getElementById('navLinks').classList.toggle('open');
@@ -1418,6 +1947,188 @@
     document.querySelectorAll('.nav-links a').forEach(a => {
       a.classList.toggle('active', a.getAttribute('href') === '#' + current);
     });
+  });
+
+  const notesModal = document.getElementById('notesModal');
+  const notesContent = document.getElementById('notesContent');
+  const closeNotesModal = document.getElementById('closeNotesModal');
+
+  document.querySelectorAll('.course-btn-notes').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      notesContent.textContent = btn.dataset.notes || 'Notes are being prepared.';
+      notesModal.classList.add('open');
+    });
+  });
+
+  closeNotesModal?.addEventListener('click', () => notesModal.classList.remove('open'));
+  notesModal?.addEventListener('click', (event) => {
+    if (event.target === notesModal) {
+      notesModal.classList.remove('open');
+    }
+  });
+
+  // Global live search across key cards
+  const resourceSearch = document.getElementById('resourceSearch');
+  const searchMeta = document.getElementById('searchMeta');
+  const searchableCards = document.querySelectorAll('.sem-card, .resource-card, .course-card, .paper-card, .project-card, .pathway-card, .tool-card');
+
+  const applySearch = () => {
+    if (!resourceSearch) {
+      return;
+    }
+
+    const query = resourceSearch.value.trim().toLowerCase();
+    let visible = 0;
+
+    searchableCards.forEach((card) => {
+      const text = (card.textContent || '').toLowerCase();
+      const match = query.length === 0 || text.includes(query);
+      card.classList.toggle('is-hidden', !match);
+      if (match) {
+        visible += 1;
+      }
+    });
+
+    if (searchMeta) {
+      searchMeta.textContent = query.length === 0
+        ? 'Showing all resources'
+        : `${visible} matches for "${query}"`;
+    }
+  };
+
+  resourceSearch?.addEventListener('input', applySearch);
+
+  // Course progress tracker (localStorage)
+  const progressKey = 'fast-hub-progress-v1';
+  const doneButtons = document.querySelectorAll('.course-btn-done');
+  const savedProgress = JSON.parse(localStorage.getItem(progressKey) || '{}');
+
+  const updateCourseState = (id, done, button) => {
+    const card = button.closest('.course-card');
+    if (!card) {
+      return;
+    }
+
+    card.classList.toggle('done', done);
+    button.textContent = done ? 'Completed' : 'Mark as Done';
+
+    if (done) {
+      savedProgress[id] = true;
+    } else {
+      delete savedProgress[id];
+    }
+
+    localStorage.setItem(progressKey, JSON.stringify(savedProgress));
+  };
+
+  doneButtons.forEach((button) => {
+    const progressId = button.dataset.progressId;
+    if (!progressId) {
+      return;
+    }
+
+    updateCourseState(progressId, Boolean(savedProgress[progressId]), button);
+
+    button.addEventListener('click', () => {
+      const isDone = Boolean(savedProgress[progressId]);
+      updateCourseState(progressId, !isDone, button);
+    });
+  });
+
+  // SGPA Calculator
+  const sgpaRows = document.getElementById('sgpaRows');
+  const addCourseRow = document.getElementById('addCourseRow');
+  const calcSgpa = document.getElementById('calcSgpa');
+  const resetSgpa = document.getElementById('resetSgpa');
+  const sgpaResult = document.getElementById('sgpaResult');
+
+  const gradePoints = {
+    'A': 4.0,
+    'A-': 3.67,
+    'B+': 3.33,
+    'B': 3.0,
+    'B-': 2.67,
+    'C+': 2.33,
+    'C': 2.0,
+    'C-': 1.67,
+    'D': 1.0,
+    'F': 0.0
+  };
+
+  const createSgpaRow = () => {
+    if (!sgpaRows) {
+      return;
+    }
+
+    const row = document.createElement('div');
+    row.className = 'sgpa-row';
+    row.innerHTML = `
+      <input type="text" placeholder="Course name (e.g., DSA)">
+      <input type="number" min="1" max="6" step="1" value="3" placeholder="CH">
+      <select>
+        <option>A</option>
+        <option>A-</option>
+        <option>B+</option>
+        <option>B</option>
+        <option>B-</option>
+        <option>C+</option>
+        <option>C</option>
+        <option>C-</option>
+        <option>D</option>
+        <option>F</option>
+      </select>
+      <button type="button" class="tiny-btn">X</button>
+    `;
+
+    const removeBtn = row.querySelector('button');
+    removeBtn?.addEventListener('click', () => row.remove());
+    sgpaRows.appendChild(row);
+  };
+
+  if (sgpaRows) {
+    createSgpaRow();
+    createSgpaRow();
+    createSgpaRow();
+  }
+
+  addCourseRow?.addEventListener('click', createSgpaRow);
+
+  calcSgpa?.addEventListener('click', () => {
+    if (!sgpaRows || !sgpaResult) {
+      return;
+    }
+
+    const rows = sgpaRows.querySelectorAll('.sgpa-row');
+    let totalPoints = 0;
+    let totalCredits = 0;
+
+    rows.forEach((row) => {
+      const creditsInput = row.querySelector('input[type="number"]');
+      const gradeSelect = row.querySelector('select');
+      const credits = Number(creditsInput?.value || 0);
+      const grade = gradeSelect?.value || 'F';
+      const points = gradePoints[grade] ?? 0;
+
+      if (credits > 0) {
+        totalCredits += credits;
+        totalPoints += credits * points;
+      }
+    });
+
+    const sgpa = totalCredits > 0 ? (totalPoints / totalCredits) : 0;
+    sgpaResult.textContent = sgpa.toFixed(2);
+  });
+
+  resetSgpa?.addEventListener('click', () => {
+    if (!sgpaRows || !sgpaResult) {
+      return;
+    }
+
+    sgpaRows.innerHTML = '';
+    createSgpaRow();
+    createSgpaRow();
+    createSgpaRow();
+    sgpaResult.textContent = '0.00';
   });
 </script>
 </body>
