@@ -73,6 +73,7 @@
     display: flex; align-items: center; justify-content: space-between;
     padding: 1rem 2rem;
     background: rgba(10,10,15,0.85);
+    -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
   }
@@ -154,6 +155,7 @@
       linear-gradient(var(--border) 1px, transparent 1px),
       linear-gradient(90deg, var(--border) 1px, transparent 1px);
     background-size: 60px 60px;
+    -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
     mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
   }
   .hero-content {
@@ -393,7 +395,150 @@
     border: 1px solid var(--border-bright);
     border-radius: 12px;
     padding: 0.8rem;
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+  }
+
+  /* ===== CLASS TOKENS TO REPLACE INLINE STYLES ===== */
+  .sem-s1 { --sem-color:#00d4ff; }
+  .sem-s2 { --sem-color:#a78bfa; }
+  .sem-s3 { --sem-color:#10b981; }
+  .sem-s4 { --sem-color:#f59e0b; }
+  .sem-s5 { --sem-color:#f472b6; }
+  .sem-s6 { --sem-color:#34d399; }
+  .sem-s7 { --sem-color:#60a5fa; }
+  .sem-s8 { --sem-color:#fb923c; }
+
+  .rc-1 { --card-accent:#00d4ff; --icon-bg:rgba(0,212,255,0.1); --icon-border:rgba(0,212,255,0.2); }
+  .rc-2 { --card-accent:#a78bfa; --icon-bg:rgba(124,58,237,0.1); --icon-border:rgba(124,58,237,0.2); }
+  .rc-3 { --card-accent:#10b981; --icon-bg:rgba(16,185,129,0.1); --icon-border:rgba(16,185,129,0.2); }
+  .rc-4 { --card-accent:#f59e0b; --icon-bg:rgba(245,158,11,0.1); --icon-border:rgba(245,158,11,0.2); }
+  .rc-5 { --card-accent:#f472b6; --icon-bg:rgba(244,114,182,0.1); --icon-border:rgba(244,114,182,0.2); }
+  .rc-6 { --card-accent:#34d399; --icon-bg:rgba(52,211,153,0.1); --icon-border:rgba(52,211,153,0.2); }
+  .rc-7 { --card-accent:#60a5fa; --icon-bg:rgba(96,165,250,0.1); --icon-border:rgba(96,165,250,0.2); }
+
+  .cc-1 { --c-color:#00d4ff; }
+  .cc-2 { --c-color:#a78bfa; }
+  .cc-3 { --c-color:#f59e0b; }
+  .cc-4 { --c-color:#10b981; }
+
+  .pc-1 { --badge-bg:rgba(0,212,255,0.1); --badge-color:#00d4ff; --badge-border:rgba(0,212,255,0.2); }
+  .pc-2 { --badge-bg:rgba(167,139,250,0.1); --badge-color:#a78bfa; --badge-border:rgba(167,139,250,0.2); }
+  .pc-3 { --badge-bg:rgba(16,185,129,0.1); --badge-color:#10b981; --badge-border:rgba(16,185,129,0.2); }
+  .pc-4 { --badge-bg:rgba(245,158,11,0.1); --badge-color:#f59e0b; --badge-border:rgba(245,158,11,0.2); }
+  .pc-5 { --badge-bg:rgba(244,114,182,0.1); --badge-color:#f472b6; --badge-border:rgba(244,114,182,0.2); }
+  .pc-6 { --badge-bg:rgba(96,165,250,0.1); --badge-color:#60a5fa; --badge-border:rgba(96,165,250,0.2); }
+  .pc-7 { --badge-bg:rgba(52,211,153,0.1); --badge-color:#34d399; --badge-border:rgba(52,211,153,0.2); }
+  .pc-8 { --badge-bg:rgba(251,146,60,0.1); --badge-color:#fb923c; --badge-border:rgba(251,146,60,0.2); }
+
+  .pr-1 { --p-color:#00d4ff; }
+  .pr-2 { --p-color:#a78bfa; }
+  .pr-3 { --p-color:#10b981; }
+  .pr-4 { --p-color:#f59e0b; }
+  .pr-5 { --p-color:#f472b6; }
+  .pr-6 { --p-color:#34d399; }
+
+  .center-cta {
+    text-align:center;
+    margin-top: 2rem;
+  }
+
+  .section-tag-spaced {
+    margin-bottom:0.75rem;
+  }
+
+  .action-row {
+    display:flex;
+    gap:1rem;
+    flex-wrap:wrap;
+  }
+
+  /* ===== PDF PREVIEW ===== */
+  .preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .preview-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem;
+  }
+  .preview-card h3 {
+    font-family: var(--font-display);
+    font-size: 0.94rem;
+    margin-bottom: 0.35rem;
+  }
+  .preview-card p {
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    margin-bottom: 0.65rem;
+  }
+  .preview-btn {
+    border: 1px solid rgba(0,212,255,0.35);
+    background: rgba(0,212,255,0.08);
+    color: var(--accent);
+    border-radius: 7px;
+    padding: 0.35rem 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    cursor: pointer;
+  }
+  .preview-btn:hover { background: rgba(0,212,255,0.16); }
+  .preview-input-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.5rem;
+    margin-top: 0.55rem;
+  }
+  .preview-input {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 7px;
+    padding: 0.42rem 0.55rem;
+    font-size: 0.75rem;
+  }
+  .pdf-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(2,6,23,0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .pdf-modal.open { display: flex; }
+  .pdf-shell {
+    width: min(980px, 100%);
+    height: min(85vh, 760px);
+    background: var(--surface);
+    border: 1px solid var(--border-bright);
+    border-radius: 12px;
+    padding: 0.8rem;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 0.65rem;
+  }
+  .pdf-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .pdf-head h3 {
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+  }
+  .pdf-frame {
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
   }
   .floating-quick-links h3 {
     font-family: var(--font-display);
@@ -1328,6 +1473,47 @@
 
 <div class="divider"></div>
 
+<section id="preview">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Instant Preview</div>
+      <h2 class="section-title">Direct PDF <span>Preview</span></h2>
+      <p class="section-desc">Open selected PDFs directly in an in-page viewer so students do not need repeated redirects.</p>
+    </div>
+    <div class="preview-grid reveal">
+      <article class="preview-card">
+        <h3>Sample Notes Preview</h3>
+        <p>Use this sample to test the in-page preview flow quickly.</p>
+        <button type="button" class="preview-btn" data-preview-url="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf">Open Sample PDF</button>
+      </article>
+      <article class="preview-card">
+        <h3>Paste Your PDF/Drive Link</h3>
+        <p>Paste direct PDF URL or embeddable Drive preview URL and open it instantly.</p>
+        <div class="preview-input-row">
+          <input id="customPreviewUrl" class="preview-input" type="url" placeholder="https://example.com/notes.pdf">
+          <button id="openCustomPreview" type="button" class="preview-btn">Preview</button>
+        </div>
+      </article>
+      <article class="preview-card">
+        <h3>Tip for Google Drive</h3>
+        <p>Use link format: <code>https://drive.google.com/file/d/FILE_ID/preview</code> for best embedded preview behavior.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div id="pdfPreviewModal" class="pdf-modal" role="dialog" aria-modal="true" aria-label="PDF preview modal">
+  <div class="pdf-shell">
+    <div class="pdf-head">
+      <h3>Resource Preview</h3>
+      <button id="closePdfPreview" type="button" class="notes-close">Close</button>
+    </div>
+    <iframe id="pdfPreviewFrame" class="pdf-frame" title="PDF preview"></iframe>
+  </div>
+</div>
+
+<div class="divider"></div>
+
 <section id="planner">
   <div class="container">
     <div class="section-header reveal">
@@ -1374,7 +1560,7 @@
     </div>
     <div class="sem-grid reveal">
 
-      <a href="https://github.com/nuces-isb-past-papers" target="_blank" class="sem-card" style="--sem-color:#00d4ff">
+      <a href="https://github.com/nuces-isb-past-papers" target="_blank" rel="noopener noreferrer" class="sem-card sem-s1">
         <div class="sem-num">Semester 01</div>
         <div class="sem-title">Foundations</div>
         <div class="sem-courses">
@@ -1387,7 +1573,7 @@
         <span class="sem-arrow">→</span>
       </a>
 
-      <a href="https://github.com/nuces-isb-past-papers/BS-CS-Semester-2" target="_blank" class="sem-card" style="--sem-color:#a78bfa">
+      <a href="https://github.com/nuces-isb-past-papers/BS-CS-Semester-2" target="_blank" rel="noopener noreferrer" class="sem-card sem-s2">
         <div class="sem-num">Semester 02</div>
         <div class="sem-title">Core CS Begins</div>
         <div class="sem-courses">
@@ -1399,7 +1585,7 @@
         <span class="sem-arrow">→</span>
       </a>
 
-      <a href="https://github.com/nuces-isb-past-papers/BS-CS-Semester-3" target="_blank" class="sem-card" style="--sem-color:#10b981">
+      <a href="https://github.com/nuces-isb-past-papers/BS-CS-Semester-3" target="_blank" rel="noopener noreferrer" class="sem-card sem-s3">
         <div class="sem-num">Semester 03</div>
         <div class="sem-title">Algorithms & Systems</div>
         <div class="sem-courses">
@@ -1411,7 +1597,7 @@
         <span class="sem-arrow">→</span>
       </a>
 
-      <a href="https://github.com/nuces-isb-past-papers/BS-CS-Semester-4" target="_blank" class="sem-card" style="--sem-color:#f59e0b">
+      <a href="https://github.com/nuces-isb-past-papers/BS-CS-Semester-4" target="_blank" rel="noopener noreferrer" class="sem-card sem-s4">
         <div class="sem-num">Semester 04</div>
         <div class="sem-title">Systems Depth</div>
         <div class="sem-courses">
@@ -1423,7 +1609,7 @@
         <span class="sem-arrow">→</span>
       </a>
 
-      <a href="https://github.com/nuces-isb-past-papers/BS-CS-Semester-5" target="_blank" class="sem-card" style="--sem-color:#f472b6">
+      <a href="https://github.com/nuces-isb-past-papers/BS-CS-Semester-5" target="_blank" rel="noopener noreferrer" class="sem-card sem-s5">
         <div class="sem-num">Semester 05</div>
         <div class="sem-title">Advanced Systems</div>
         <div class="sem-courses">
@@ -1435,7 +1621,7 @@
         <span class="sem-arrow">→</span>
       </a>
 
-      <a href="https://github.com/nuces-isb-past-papers" target="_blank" class="sem-card" style="--sem-color:#34d399">
+      <a href="https://github.com/nuces-isb-past-papers" target="_blank" rel="noopener noreferrer" class="sem-card sem-s6">
         <div class="sem-num">Semester 06</div>
         <div class="sem-title">Specialization</div>
         <div class="sem-courses">
@@ -1446,7 +1632,7 @@
         <span class="sem-arrow">→</span>
       </a>
 
-      <a href="https://github.com/nuces-isb-past-papers" target="_blank" class="sem-card" style="--sem-color:#60a5fa">
+      <a href="https://github.com/nuces-isb-past-papers" target="_blank" rel="noopener noreferrer" class="sem-card sem-s7">
         <div class="sem-num">Semester 07</div>
         <div class="sem-title">Electives & FYP-I</div>
         <div class="sem-courses">
@@ -1458,7 +1644,7 @@
         <span class="sem-arrow">→</span>
       </a>
 
-      <a href="https://github.com/nuces-isb-past-papers" target="_blank" class="sem-card" style="--sem-color:#fb923c">
+      <a href="https://github.com/nuces-isb-past-papers" target="_blank" rel="noopener noreferrer" class="sem-card sem-s8">
         <div class="sem-num">Semester 08</div>
         <div class="sem-title">Capstone</div>
         <div class="sem-courses">
@@ -1485,7 +1671,7 @@
     </div>
     <div class="resources-grid">
 
-      <div class="resource-card reveal" style="--card-accent:#00d4ff; --icon-bg:rgba(0,212,255,0.1); --icon-border:rgba(0,212,255,0.2)">
+      <div class="resource-card reveal rc-1">
         <div class="resource-icon">🎓</div>
         <div class="resource-campus">NUCES ISB · Official Org</div>
         <div class="resource-name">nuces-isb-past-papers</div>
@@ -1495,10 +1681,10 @@
           <span class="rtag rtag-green">Past Papers</span>
           <span class="rtag rtag-purple">Open Source</span>
         </div>
-        <a href="https://github.com/nuces-isb-past-papers" target="_blank" class="resource-link">Visit Org →</a>
+        <a href="https://github.com/nuces-isb-past-papers" target="_blank" rel="noopener noreferrer" class="resource-link">Visit Org →</a>
       </div>
 
-      <div class="resource-card reveal" style="--card-accent:#a78bfa; --icon-bg:rgba(124,58,237,0.1); --icon-border:rgba(124,58,237,0.2)">
+      <div class="resource-card reveal rc-2">
         <div class="resource-icon">📦</div>
         <div class="resource-campus">ALL CAMPUSES · 2018–2022</div>
         <div class="resource-name">hassanzhd / FAST-Resources</div>
@@ -1508,10 +1694,10 @@
           <span class="rtag rtag-blue">Notes</span>
           <span class="rtag rtag-yellow">Slides</span>
         </div>
-        <a href="https://github.com/hassanzhd/FAST-Resources" target="_blank" class="resource-link">View Repo →</a>
+        <a href="https://github.com/hassanzhd/FAST-Resources" target="_blank" rel="noopener noreferrer" class="resource-link">View Repo →</a>
       </div>
 
-      <div class="resource-card reveal" style="--card-accent:#10b981; --icon-bg:rgba(16,185,129,0.1); --icon-border:rgba(16,185,129,0.2)">
+      <div class="resource-card reveal rc-3">
         <div class="resource-icon">📂</div>
         <div class="resource-campus">ALL CAMPUSES · 2020–2024</div>
         <div class="resource-name">codewith-usama / FAST-Resources</div>
@@ -1521,10 +1707,10 @@
           <span class="rtag rtag-blue">Past Papers</span>
           <span class="rtag rtag-purple">Notes</span>
         </div>
-        <a href="https://github.com/codewith-usama/FAST-Resources" target="_blank" class="resource-link">View Repo →</a>
+        <a href="https://github.com/codewith-usama/FAST-Resources" target="_blank" rel="noopener noreferrer" class="resource-link">View Repo →</a>
       </div>
 
-      <div class="resource-card reveal" style="--card-accent:#f59e0b; --icon-bg:rgba(245,158,11,0.1); --icon-border:rgba(245,158,11,0.2)">
+      <div class="resource-card reveal rc-4">
         <div class="resource-icon">📝</div>
         <div class="resource-campus">ALL CAMPUSES · LHR Based</div>
         <div class="resource-name">abdullaharifx / Resources-FAST</div>
@@ -1534,10 +1720,10 @@
           <span class="rtag rtag-green">All Disciplines</span>
           <span class="rtag rtag-blue">PDF Format</span>
         </div>
-        <a href="https://github.com/abdullaharifx/Resources-FAST" target="_blank" class="resource-link">View Repo →</a>
+        <a href="https://github.com/abdullaharifx/Resources-FAST" target="_blank" rel="noopener noreferrer" class="resource-link">View Repo →</a>
       </div>
 
-      <div class="resource-card reveal" style="--card-accent:#f472b6; --icon-bg:rgba(244,114,182,0.1); --icon-border:rgba(244,114,182,0.2)">
+      <div class="resource-card reveal rc-5">
         <div class="resource-icon">🏫</div>
         <div class="resource-campus">ALL CAMPUSES · CS & SE</div>
         <div class="resource-name">Syed007Hassan / Fast-Material-CS-SE</div>
@@ -1548,10 +1734,10 @@
           <span class="rtag rtag-blue">Books</span>
           <span class="rtag rtag-yellow">Outlines</span>
         </div>
-        <a href="https://github.com/Syed007Hassan/Fast-Material-CS-SE" target="_blank" class="resource-link">View Repo →</a>
+        <a href="https://github.com/Syed007Hassan/Fast-Material-CS-SE" target="_blank" rel="noopener noreferrer" class="resource-link">View Repo →</a>
       </div>
 
-      <div class="resource-card reveal" style="--card-accent:#34d399; --icon-bg:rgba(52,211,153,0.1); --icon-border:rgba(52,211,153,0.2)">
+      <div class="resource-card reveal rc-6">
         <div class="resource-icon">📚</div>
         <div class="resource-campus">ALL CAMPUSES · 2019–2022</div>
         <div class="resource-name">ammansoomro / FAST-Resources</div>
@@ -1561,10 +1747,10 @@
           <span class="rtag rtag-blue">Grad + Undergrad</span>
           <span class="rtag rtag-purple">Contributions Open</span>
         </div>
-        <a href="https://github.com/ammansoomro/FAST-Resources" target="_blank" class="resource-link">View Repo →</a>
+        <a href="https://github.com/ammansoomro/FAST-Resources" target="_blank" rel="noopener noreferrer" class="resource-link">View Repo →</a>
       </div>
 
-      <div class="resource-card reveal" style="--card-accent:#60a5fa; --icon-bg:rgba(96,165,250,0.1); --icon-border:rgba(96,165,250,0.2)">
+      <div class="resource-card reveal rc-7">
         <div class="resource-icon">🎥</div>
         <div class="resource-campus">FAST LHR · STUDY PLATFORM</div>
         <div class="resource-name">Campus+ (campusplus.live)</div>
@@ -1574,7 +1760,7 @@
           <span class="rtag rtag-green">Past Papers</span>
           <span class="rtag rtag-purple">FAST LHR</span>
         </div>
-        <a href="https://www.campusplus.live/playlists" target="_blank" class="resource-link">Browse Playlists →</a>
+        <a href="https://www.campusplus.live/playlists" target="_blank" rel="noopener noreferrer" class="resource-link">Browse Playlists →</a>
       </div>
 
     </div>
@@ -1593,58 +1779,58 @@
     </div>
     <div class="courses-grid reveal">
 
-      <div class="course-card" style="--c-color:#00d4ff">
+      <div class="course-card cc-1">
         <span class="course-icon">⚡</span>
         <div class="course-code">CS-201</div>
         <div class="course-name">Data Structures (DSA)</div>
         <div class="topic-preview">Trees, Graphs, Hash Tables</div>
         <div class="survival-tip">How to pass: Solve 2 linked-list + 2 tree questions weekly. Focus especially on time complexity analysis.</div>
         <div class="course-actions">
-          <a href="https://www.campusplus.live/playlists/dsa" target="_blank" class="course-btn course-btn-campus">Watch on Campus+</a>
+          <a href="https://www.campusplus.live/playlists/dsa" target="_blank" rel="noopener noreferrer" class="course-btn course-btn-campus">Watch on Campus+</a>
           <button type="button" class="course-btn course-btn-notes" data-notes="CS-201 DSA Notes\n\nRecommended topics:\n- Trees and traversals\n- Graph basics and shortest path\n- Hashing and collision handling\n\nIf your local notes file is missing, use the practice repo.">View Notes</button>
-          <a href="https://github.com/AliShah1029384756/dsa-notes" target="_blank" class="course-btn course-btn-practice">Practice Papers</a>
+          <a href="https://github.com/AliShah1029384756/dsa-notes" target="_blank" rel="noopener noreferrer" class="course-btn course-btn-practice">Practice Papers</a>
           <button type="button" class="course-btn course-btn-done" data-progress-id="course-dsa">Mark as Done</button>
         </div>
       </div>
 
-      <div class="course-card" style="--c-color:#a78bfa">
+      <div class="course-card cc-2">
         <span class="course-icon">🏗️</span>
         <div class="course-code">CS-211</div>
         <div class="course-name">Object Oriented Programming</div>
         <div class="topic-preview">Polymorphism, Inheritance, Abstraction</div>
         <div class="survival-tip">How to pass: Practice class diagrams and dry-run inheritance cases. Generic FAST tip: focus on lab tasks for Mid-1.</div>
         <div class="course-actions">
-          <a href="https://www.campusplus.live/playlists/oop" target="_blank" class="course-btn course-btn-campus">Watch on Campus+</a>
+          <a href="https://www.campusplus.live/playlists/oop" target="_blank" rel="noopener noreferrer" class="course-btn course-btn-campus">Watch on Campus+</a>
           <button type="button" class="course-btn course-btn-notes" data-notes="CS-211 OOP Notes\n\nRecommended topics:\n- Classes and objects\n- Inheritance patterns\n- Runtime polymorphism\n\nUse linked GitHub folder for labs and papers.">View Notes</button>
-          <a href="https://github.com/AliShah1029384756/oop-concepts" target="_blank" class="course-btn course-btn-practice">Practice Papers</a>
+          <a href="https://github.com/AliShah1029384756/oop-concepts" target="_blank" rel="noopener noreferrer" class="course-btn course-btn-practice">Practice Papers</a>
           <button type="button" class="course-btn course-btn-done" data-progress-id="course-oop">Mark as Done</button>
         </div>
       </div>
 
-      <div class="course-card" style="--c-color:#f59e0b">
+      <div class="course-card cc-3">
         <span class="course-icon">🖥️</span>
         <div class="course-code">CS-302</div>
         <div class="course-name">Operating Systems</div>
         <div class="topic-preview">CPU Scheduling, Deadlocks, Paging</div>
         <div class="survival-tip">How to pass: Prioritize scheduling, deadlocks, and paging numericals first. Build your own short formula sheet.</div>
         <div class="course-actions">
-          <a href="https://www.campusplus.live/playlists/os" target="_blank" class="course-btn course-btn-campus">Watch on Campus+</a>
+          <a href="https://www.campusplus.live/playlists/os" target="_blank" rel="noopener noreferrer" class="course-btn course-btn-campus">Watch on Campus+</a>
           <button type="button" class="course-btn course-btn-notes" data-notes="CS-302 OS Notes\n\nRecommended topics:\n- Process scheduling\n- Deadlocks\n- Memory management\n\nUse linked repository for papers and revision assets.">View Notes</button>
-          <a href="https://github.com/AliShah1029384756/os-survival" target="_blank" class="course-btn course-btn-practice">Practice Papers</a>
+          <a href="https://github.com/AliShah1029384756/os-survival" target="_blank" rel="noopener noreferrer" class="course-btn course-btn-practice">Practice Papers</a>
           <button type="button" class="course-btn course-btn-done" data-progress-id="course-os">Mark as Done</button>
         </div>
       </div>
 
-      <div class="course-card" style="--c-color:#10b981">
+      <div class="course-card cc-4">
         <span class="course-icon">🗄️</span>
         <div class="course-code">CS-304</div>
         <div class="course-name">Database Systems</div>
         <div class="topic-preview">Normalization, SQL Joins, Indexing</div>
         <div class="survival-tip">How to pass: Master normalization + SQL joins + transactions. Practice at least one schema design every week.</div>
         <div class="course-actions">
-          <a href="https://www.campusplus.live/playlists/db" target="_blank" class="course-btn course-btn-campus">Watch on Campus+</a>
+          <a href="https://www.campusplus.live/playlists/db" target="_blank" rel="noopener noreferrer" class="course-btn course-btn-campus">Watch on Campus+</a>
           <button type="button" class="course-btn course-btn-notes" data-notes="CS-304 DB Notes\n\nRecommended topics:\n- Normalization\n- SQL joins and query plans\n- Transaction isolation\n\nUse linked repo for sheets, query sets, and papers.">View Notes</button>
-          <a href="https://github.com/AliShah1029384756/db-queries" target="_blank" class="course-btn course-btn-practice">Practice Papers</a>
+          <a href="https://github.com/AliShah1029384756/db-queries" target="_blank" rel="noopener noreferrer" class="course-btn course-btn-practice">Practice Papers</a>
           <button type="button" class="course-btn course-btn-done" data-progress-id="course-db">Mark as Done</button>
         </div>
       </div>
@@ -1675,8 +1861,7 @@
     </div>
     <div class="papers-grid reveal">
 
-      <a href="https://github.com/nuces-isb-past-papers" target="_blank" class="paper-card"
-         style="--badge-bg:rgba(0,212,255,0.1); --badge-color:#00d4ff; --badge-border:rgba(0,212,255,0.2)">
+      <a href="https://github.com/nuces-isb-past-papers" target="_blank" rel="noopener noreferrer" class="paper-card pc-1">
         <div class="paper-sem-badge">S1</div>
         <div class="paper-info">
           <div class="paper-title">Semester 1 — Foundations</div>
@@ -1685,8 +1870,7 @@
         <span class="paper-arrow">→</span>
       </a>
 
-      <a href="https://github.com/nuces-isb-past-papers/BS-CS-Semester-2" target="_blank" class="paper-card"
-         style="--badge-bg:rgba(167,139,250,0.1); --badge-color:#a78bfa; --badge-border:rgba(167,139,250,0.2)">
+      <a href="https://github.com/nuces-isb-past-papers/BS-CS-Semester-2" target="_blank" rel="noopener noreferrer" class="paper-card pc-2">
         <div class="paper-sem-badge">S2</div>
         <div class="paper-info">
           <div class="paper-title">Semester 2 — Core CS</div>
@@ -1695,8 +1879,7 @@
         <span class="paper-arrow">→</span>
       </a>
 
-      <a href="https://github.com/nuces-isb-past-papers/BS-CS-Semester-3" target="_blank" class="paper-card"
-         style="--badge-bg:rgba(16,185,129,0.1); --badge-color:#10b981; --badge-border:rgba(16,185,129,0.2)">
+      <a href="https://github.com/nuces-isb-past-papers/BS-CS-Semester-3" target="_blank" rel="noopener noreferrer" class="paper-card pc-3">
         <div class="paper-sem-badge">S3</div>
         <div class="paper-info">
           <div class="paper-title">Semester 3 — Algorithms</div>
@@ -1705,8 +1888,7 @@
         <span class="paper-arrow">→</span>
       </a>
 
-      <a href="https://github.com/nuces-isb-past-papers/BS-CS-Semester-4" target="_blank" class="paper-card"
-         style="--badge-bg:rgba(245,158,11,0.1); --badge-color:#f59e0b; --badge-border:rgba(245,158,11,0.2)">
+      <a href="https://github.com/nuces-isb-past-papers/BS-CS-Semester-4" target="_blank" rel="noopener noreferrer" class="paper-card pc-4">
         <div class="paper-sem-badge">S4</div>
         <div class="paper-info">
           <div class="paper-title">Semester 4 — Systems</div>
@@ -1715,8 +1897,7 @@
         <span class="paper-arrow">→</span>
       </a>
 
-      <a href="https://github.com/nuces-isb-past-papers/BS-CS-Semester-5" target="_blank" class="paper-card"
-         style="--badge-bg:rgba(244,114,182,0.1); --badge-color:#f472b6; --badge-border:rgba(244,114,182,0.2)">
+      <a href="https://github.com/nuces-isb-past-papers/BS-CS-Semester-5" target="_blank" rel="noopener noreferrer" class="paper-card pc-5">
         <div class="paper-sem-badge">S5</div>
         <div class="paper-info">
           <div class="paper-title">Semester 5 — Advanced</div>
@@ -1725,8 +1906,7 @@
         <span class="paper-arrow">→</span>
       </a>
 
-      <a href="https://github.com/codewith-usama/PastPaper-FAST-NUCES" target="_blank" class="paper-card"
-         style="--badge-bg:rgba(96,165,250,0.1); --badge-color:#60a5fa; --badge-border:rgba(96,165,250,0.2)">
+      <a href="https://github.com/codewith-usama/PastPaper-FAST-NUCES" target="_blank" rel="noopener noreferrer" class="paper-card pc-6">
         <div class="paper-sem-badge">S6+</div>
         <div class="paper-info">
           <div class="paper-title">Semester 6–8 & All Courses</div>
@@ -1735,8 +1915,7 @@
         <span class="paper-arrow">→</span>
       </a>
 
-      <a href="https://github.com/abdullaharifx/Resources-FAST" target="_blank" class="paper-card"
-         style="--badge-bg:rgba(52,211,153,0.1); --badge-color:#34d399; --badge-border:rgba(52,211,153,0.2)">
+      <a href="https://github.com/abdullaharifx/Resources-FAST" target="_blank" rel="noopener noreferrer" class="paper-card pc-7">
         <div class="paper-sem-badge">ALL</div>
         <div class="paper-info">
           <div class="paper-title">Academic Time Machine (LHR)</div>
@@ -1745,8 +1924,7 @@
         <span class="paper-arrow">→</span>
       </a>
 
-      <a href="https://nucesai.vercel.app" target="_blank" class="paper-card"
-         style="--badge-bg:rgba(251,146,60,0.1); --badge-color:#fb923c; --badge-border:rgba(251,146,60,0.2)">
+      <a href="https://nucesai.vercel.app" target="_blank" rel="noopener noreferrer" class="paper-card pc-8">
         <div class="paper-sem-badge">🤖</div>
         <div class="paper-info">
           <div class="paper-title">NUCES AI Hub</div>
@@ -1771,8 +1949,8 @@
     </div>
     <div class="projects-grid reveal">
 
-      <a href="https://github.com/AliShah1029384756/university-course-projects/tree/main/Chess%20Game" target="_blank"
-         class="project-card" style="--p-color:#00d4ff">
+      <a href="https://github.com/AliShah1029384756/university-course-projects/tree/main/Chess%20Game" target="_blank" rel="noopener noreferrer"
+        class="project-card pr-1">
         <div class="project-level">Advanced · Computer Networks</div>
         <div class="project-name">Multiplayer Chess</div>
         <div class="project-desc">Real-time chess game with WebSockets and Socket.IO. Demonstrates client-server architecture and live state sync.</div>
@@ -1781,8 +1959,8 @@
         </div>
       </a>
 
-      <a href="https://github.com/AliShah1029384756/university-course-projects/tree/main/P2P%20Communication%20System" target="_blank"
-         class="project-card" style="--p-color:#a78bfa">
+      <a href="https://github.com/AliShah1029384756/university-course-projects/tree/main/P2P%20Communication%20System" target="_blank" rel="noopener noreferrer"
+        class="project-card pr-2">
         <div class="project-level">Advanced · Computer Networks</div>
         <div class="project-name">P2P Communication System</div>
         <div class="project-desc">Peer-to-peer architecture with file sharing capabilities built with React. Core networking concepts in action.</div>
@@ -1791,8 +1969,8 @@
         </div>
       </a>
 
-      <a href="https://github.com/AliShah1029384756/university-course-projects/tree/main/Compiler%20Project" target="_blank"
-         class="project-card" style="--p-color:#10b981">
+      <a href="https://github.com/AliShah1029384756/university-course-projects/tree/main/Compiler%20Project" target="_blank" rel="noopener noreferrer"
+        class="project-card pr-3">
         <div class="project-level">Advanced · Compiler Construction</div>
         <div class="project-name">Multi-Stage Compiler</div>
         <div class="project-desc">Complete compiler with lexing, parsing, and semantic analysis. Built using Lex/Yacc — one of the hardest FAST projects.</div>
@@ -1801,8 +1979,8 @@
         </div>
       </a>
 
-      <a href="https://github.com/AliShah1029384756/university-course-projects/tree/main/Snake%20Game" target="_blank"
-         class="project-card" style="--p-color:#f59e0b">
+      <a href="https://github.com/AliShah1029384756/university-course-projects/tree/main/Snake%20Game" target="_blank" rel="noopener noreferrer"
+        class="project-card pr-4">
         <div class="project-level">Advanced · Low-Level Programming</div>
         <div class="project-name">Snake Game in x86 Assembly</div>
         <div class="project-desc">Fully functional Snake game written in x86 Assembly language. Memory management, interrupts, and direct hardware interaction.</div>
@@ -1811,8 +1989,8 @@
         </div>
       </a>
 
-      <a href="https://github.com/AliShah1029384756/university-course-projects/tree/main/ECommerce%20Website" target="_blank"
-         class="project-card" style="--p-color:#f472b6">
+      <a href="https://github.com/AliShah1029384756/university-course-projects/tree/main/ECommerce%20Website" target="_blank" rel="noopener noreferrer"
+        class="project-card pr-5">
         <div class="project-level">Advanced · Full-Stack Development</div>
         <div class="project-name">ECommerce Platform (MERN)</div>
         <div class="project-desc">Full-stack ecommerce system with MongoDB, Express, React, and Node.js. Real-time features and complete CRUD operations.</div>
@@ -1821,8 +1999,8 @@
         </div>
       </a>
 
-      <a href="https://github.com/AliShah1029384756/university-course-projects/tree/main/Banking%20System" target="_blank"
-         class="project-card" style="--p-color:#34d399">
+      <a href="https://github.com/AliShah1029384756/university-course-projects/tree/main/Banking%20System" target="_blank" rel="noopener noreferrer"
+        class="project-card pr-6">
         <div class="project-level">Intermediate · Operating Systems</div>
         <div class="project-name">Banking System (C++)</div>
         <div class="project-desc">Process management and transaction handling in C++. Demonstrates concurrency concepts taught in OS course at FAST.</div>
@@ -1833,8 +2011,8 @@
 
     </div>
 
-    <div style="text-align:center; margin-top: 2rem;" class="reveal">
-      <a href="https://github.com/AliShah1029384756/university-course-projects" target="_blank" class="btn-secondary">
+    <div class="reveal center-cta">
+      <a href="https://github.com/AliShah1029384756/university-course-projects" target="_blank" rel="noopener noreferrer" class="btn-secondary">
         View All Projects →
       </a>
     </div>
@@ -1848,15 +2026,15 @@
   <div class="container">
     <div class="contribute-box reveal">
       <div>
-        <div class="section-tag" style="margin-bottom:0.75rem">Open Source</div>
+        <div class="section-tag section-tag-spaced">Open Source</div>
         <h2 class="contribute-title">Help keep this <span>updated</span></h2>
         <p class="contribute-desc">
           This hub is maintained by students, for students. If you have notes, past papers, or project examples that could help others — contribute and be remembered as a FASTian who gave back.
         </p>
-        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
-          <a href="https://github.com/nuces-isb-past-papers" target="_blank" class="btn-primary">Contribute to ISB Org →</a>
-          <a href="https://github.com/AliShah1029384756" target="_blank" class="btn-secondary">View My Profile</a>
-          <a href="https://forms.gle/" target="_blank" class="btn-secondary">Submit Notes Form ↗</a>
+        <div class="action-row">
+          <a href="https://github.com/nuces-isb-past-papers" target="_blank" rel="noopener noreferrer" class="btn-primary">Contribute to ISB Org →</a>
+          <a href="https://github.com/AliShah1029384756" target="_blank" rel="noopener noreferrer" class="btn-secondary">View My Profile</a>
+          <a href="https://forms.gle/" target="_blank" rel="noopener noreferrer" class="btn-secondary">Submit Notes Form ↗</a>
         </div>
       </div>
       <div>
@@ -1880,15 +2058,15 @@
       <div class="footer-desc">Built by Syed Muhammad Ali Naqvi · FAST-NUCES ISB · Batch 2022</div>
     </div>
     <div class="footer-links">
-      <a href="https://github.com/AliShah1029384756" target="_blank">GitHub Profile</a>
-      <a href="https://github.com/nuces-isb-past-papers" target="_blank">ISB Past Papers Org</a>
-      <a href="https://github.com/AliShah1029384756/university-course-projects" target="_blank">University Projects</a>
-      <a href="https://www.campusplus.live/playlists" target="_blank">Campus+ Playlists</a>
-      <a href="https://nucesai.vercel.app" target="_blank">NUCES AI Hub</a>
+      <a href="https://github.com/AliShah1029384756" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+      <a href="https://github.com/nuces-isb-past-papers" target="_blank" rel="noopener noreferrer">ISB Past Papers Org</a>
+      <a href="https://github.com/AliShah1029384756/university-course-projects" target="_blank" rel="noopener noreferrer">University Projects</a>
+      <a href="https://www.campusplus.live/playlists" target="_blank" rel="noopener noreferrer">Campus+ Playlists</a>
+      <a href="https://nucesai.vercel.app" target="_blank" rel="noopener noreferrer">NUCES AI Hub</a>
     </div>
     <div class="footer-copy">
       Free to use · Share with every FASTian · 
-      Made with care by <a href="https://github.com/AliShah1029384756" target="_blank">AliShah1029384756</a> · Last verified: Apr 2026
+      Made with care by <a href="https://github.com/AliShah1029384756" target="_blank" rel="noopener noreferrer">AliShah1029384756</a> · Last verified: Apr 2026
     </div>
   </div>
 </footer>
@@ -2129,6 +2307,59 @@
     createSgpaRow();
     createSgpaRow();
     sgpaResult.textContent = '0.00';
+  });
+
+  // Direct PDF preview modal
+  const pdfPreviewModal = document.getElementById('pdfPreviewModal');
+  const pdfPreviewFrame = document.getElementById('pdfPreviewFrame');
+  const closePdfPreview = document.getElementById('closePdfPreview');
+  const customPreviewUrl = document.getElementById('customPreviewUrl');
+  const openCustomPreview = document.getElementById('openCustomPreview');
+
+  const openPreview = (url) => {
+    if (!pdfPreviewModal || !pdfPreviewFrame || !url) {
+      return;
+    }
+
+    pdfPreviewFrame.src = url;
+    pdfPreviewModal.classList.add('open');
+  };
+
+  const closePreview = () => {
+    if (!pdfPreviewModal || !pdfPreviewFrame) {
+      return;
+    }
+
+    pdfPreviewModal.classList.remove('open');
+    pdfPreviewFrame.src = '';
+  };
+
+  document.querySelectorAll('[data-preview-url]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const url = button.getAttribute('data-preview-url') || '';
+      openPreview(url);
+    });
+  });
+
+  openCustomPreview?.addEventListener('click', () => {
+    const url = customPreviewUrl?.value?.trim() || '';
+    if (!url) {
+      return;
+    }
+    openPreview(url);
+  });
+
+  closePdfPreview?.addEventListener('click', closePreview);
+  pdfPreviewModal?.addEventListener('click', (event) => {
+    if (event.target === pdfPreviewModal) {
+      closePreview();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closePreview();
+    }
   });
 </script>
 </body>
