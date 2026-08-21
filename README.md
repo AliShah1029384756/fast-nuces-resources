@@ -25,7 +25,7 @@ It can help with:
 
 This is a **FAST-specific academic resource hub**, not a general learning platform. The broader public-learning project is maintained separately as **EduCore Open Learning Hub**.
 
-## ✨ Features
+## ✨ Features:
 
 ### 📚 Semester-wise browsing
 
